@@ -1,6 +1,6 @@
 body {
   background-color: #666;
-  color: #6b6;
+  color: rgb(187, 102, 166);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -9,7 +9,7 @@ body {
   grid-template-columns: repeat(10, max-content);
   border-left: 1px dashed darkgray;
   border-top: 1px dashed darkgray;
-  width: fit-content
+  width: fit-content;
 }
 
 .cell {
@@ -21,9 +21,9 @@ body {
 }
 
 .player {
-  background-color: #6b6;
+  background-color: rgb(187, 102, 166);
 }
 
 .goal {
-  background-color: #cc0;
+  background-color: rgb(175, 140, 159);
 }

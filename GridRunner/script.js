@@ -8,15 +8,66 @@ window.addEventListener("load", start);
 function start() {
   console.log(`Javascript kører`);
 
+  window.addEventListener("keydown", keyDown);
   // start ticking
   tick();
+}
+
+function keyDown(event) {
+  switch (event.key) {
+    case "ArrowLeft":
+    case "a":
+      direction = "left";
+      break;
+    case "ArrowRight":
+    case "d":
+      direction = "right";
+      break;
+    case "ArrowUp":
+    case "w":
+      direction = "up";
+      break;
+    case "ArrowDown":
+    case "s":
+      direction = "down";
+      break;
+  }
 }
 
 function tick() {
   // setup next tick
   setTimeout(tick, 500);
 
+  writeToCell(player.row, player.col, 0);
+
+  switch (direction) {
+    case "left":
+      player.col--;
+      if (player.col < 0) {
+        player.col = 9;
+      }
+      break;
+    case "right":
+      player.col++;
+      if (player.col > 9) {
+        player.col = 0;
+      }
+      break;
+    case "down":
+      player.row++;
+      if (player.row > 9) {
+        player.row = 0;
+      }
+      break;
+    case "up":
+      player.row--;
+      if (player.row < 0) {
+        player.row = 9;
+      }
+  }
+
   // TODO: Do stuff
+  writeToCell(player.row, player.col, 1);
 
   // display the model in full
   displayBoard();
@@ -26,6 +77,12 @@ function tick() {
 
 // ****** MODEL ******
 // #region model
+
+let direction = "left";
+const player = {
+  row: 5,
+  col: 5,
+};
 const model = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
